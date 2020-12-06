@@ -3,14 +3,14 @@ package bsu.rfe.java.group9.lab1.Minchyonok.varB9;
 public class Apple extends Food {
    private String size;
 	public Apple(String size) {
-		super("Яблоко");
+		super("РЇР±Р»РѕРєРѕ");
 		this.size = size;
 		// TODO Auto-generated constructor stub
 		 
 	}
 	public void consume() {
 		// TODO Auto-generated method stub
-		System.out.println(this + " съедено");
+		System.out.println(this + " СЃСЉРµРґРµРЅРѕ");
 	    }
 	
 	public String getSize() {
@@ -24,6 +24,6 @@ public class Apple extends Food {
 	
 		
 	public String toString() {
-		return super.toString() + " размера '" + size.toUpperCase() + "'";
+		return super.toString() + " СЂР°Р·РјРµСЂР° '" + size.toUpperCase() + "'";
 		}
 }
