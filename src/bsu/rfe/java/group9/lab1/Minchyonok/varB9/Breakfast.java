@@ -8,12 +8,8 @@ public class Breakfast {
 	// Анализ аргументов командной строки и создание для них
 	// экземпляров соответствующих классов для завтрака
 	int itemsSoFar = 0;  
-      String[] v6 = args;
-      int OverallTheNumbersEggs = args.length;
 
-      int OverallTheNumbersApple;
-      for(OverallTheNumbersApple = 0; OverallTheNumbersApple < OverallTheNumbersEggs; ++OverallTheNumbersApple) {
-         String arg = v6[OverallTheNumbersApple];
+	for (String arg: args)  {
 	String[] parts = arg.split("/");
 	if (parts[0].equals("Cheese")) {
 	// У сыра дополнительных параметров нет
@@ -24,53 +20,38 @@ public class Breakfast {
 	breakfast[itemsSoFar] = new Apple(parts[1]);
 	} else
 		if (parts[0].equals("Eggs")) {
-			breakfast[itemsSoFar] = new Eggs(parts[1]);}
+			breakfast[itemsSoFar] = new Eggs(getNumberFromParam(parts[1]));
+			;}
 	// ... Продолжается анализ других продуктов для завтрака
 	itemsSoFar++;
 	}
 	// Перебор всех элементов массива
-	 int OverallTheNumbersCheese = 0;
-      OverallTheNumbersApple = 0;
-      OverallTheNumbersEggs = 0;
-      Cheese overalCheese = new Cheese(null);
-      Apple overalApple = new Apple("Яблоко");
-      Eggs overalEggs = new Eggs("Яйца");
-      Food[] v2 = breakfast;
-     int v1 = breakfast.length;
+	int OverallTheNumbersCheese = 0;
+	int OverallTheNumbersApple = 0;
+	int OverallTheNumbersEggs = 0;
+	Cheese overalCheese = new Cheese(null);
+	Apple overalApple = new Apple("Яблоко");
+	Eggs overalEggs = new Eggs(0);
 	Food item;
-     int v0;
-     for(v0 = 0; v0 < v1; ++v0) {
-        int k=1;
-    	 item = v2[v0];
-        if (item != null) {
-           if (item.equals(overalApple)) {
-              ++OverallTheNumbersApple;
-           }
+	int v0;
 
-           if (item.equals(overalCheese)) {
-        	   
-              ++OverallTheNumbersCheese;
-           }
+	for(v0 = 0; v0 < breakfast.length; ++v0) {
+		item = breakfast[v0];
+		if (item != null) {
+			if (item.equals(overalApple)) {
+				++OverallTheNumbersApple;
+			} else if (item.equals(overalCheese)) {
+				++OverallTheNumbersCheese;
+			} else if (item.equals(overalEggs)) {
+				OverallTheNumbersEggs=((Eggs)item).getNumber()+OverallTheNumbersEggs;
+			}
 
-           if (item.equals(overalEggs)) {
-        	  k++;
-              OverallTheNumbersEggs=OverallTheNumbersEggs+k;
-              
-           }
-        }
-     }
-
-     v2 = breakfast;
-     v1 = breakfast.length;
-
-     for(v0 = 0; v0 < v1; ++v0) {
-        item = v2[v0];
-        if (item == null) {
-           break;
-        }
-       
-	// Если элемент не null – употребить продукт
-	item.consume();}
+			// Если элемент не null - употребить продукт
+			item.consume();
+		} else {
+			break;
+		}
+	}
 
      System.out.println("Всего сыра ");
      System.out.println(OverallTheNumbersCheese);
@@ -87,5 +68,19 @@ public class Breakfast {
 	
 	System.out.println("Всего хорошего!");
 	}
+	private static Integer getNumberFromParam(String param) {
+		switch (param.toLowerCase()) {
+		case "одно":
+			return 1;
+		case "два":
+			return 2;
+		case "три":
+			return 3; 
+
+		default:
+			System.out.println("Неопределенное количество яиц!");
+			break;
+		}
+		return 0;
 	}
-	
+}
