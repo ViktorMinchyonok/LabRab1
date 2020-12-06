@@ -3,13 +3,13 @@ package bsu.rfe.java.group9.lab1.Minchyonok.varB9;
 public class Cheese extends Food {
 
 	public Cheese(String name) {
-		super("Ρϋπ");
+		super("Π΅Ρ‹Ρ€");
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void consume() {
-		System.out.println(this + " ρϊεδεν");
+		System.out.println(this + " ΡΡΠµΠ΄ΠµΠ½");
 		// TODO Auto-generated method stub
 	}
 
