@@ -3,35 +3,36 @@ package bsu.rfe.java.group9.lab1.Minchyonok.varB9;
 public class Breakfast {
 	
 	public static void main(String[] args) throws Exception {
-	// Определение ссылок на продукты завтрака
+	// РћРїСЂРµРґРµР»РµРЅРёРµ СЃСЃС‹Р»РѕРє РЅР° РїСЂРѕРґСѓРєС‚С‹ Р·Р°РІС‚СЂР°РєР°
 	Food[] breakfast = new Food[20];
-	// Анализ аргументов командной строки и создание для них
-	// экземпляров соответствующих классов для завтрака
+	// РђРЅР°Р»РёР· Р°СЂРіСѓРјРµРЅС‚РѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё Рё СЃРѕР·РґР°РЅРёРµ РґР»СЏ РЅРёС…
+	// СЌРєР·РµРјРїР»СЏСЂРѕРІ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РєР»Р°СЃСЃРѕРІ РґР»СЏ Р·Р°РІС‚СЂР°РєР°
 	int itemsSoFar = 0;  
-
+    int t=0;
 	for (String arg: args)  {
 	String[] parts = arg.split("/");
 	if (parts[0].equals("Cheese")) {
-	// У сыра дополнительных параметров нет
+	// РЈ СЃС‹СЂР° РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РїР°СЂР°РјРµС‚СЂРѕРІ РЅРµС‚
 	breakfast[itemsSoFar] = new Cheese(null);
 	} else
 	if (parts[0].equals("Apple")) {
-	// У яблока – 1 параметр, который находится в parts[1]
+	// РЈ СЏР±Р»РѕРєР° вЂ“ 1 РїР°СЂР°РјРµС‚СЂ, РєРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґРёС‚СЃСЏ РІ parts[1]
 	breakfast[itemsSoFar] = new Apple(parts[1]);
 	} else
 		if (parts[0].equals("Eggs")) {
-			breakfast[itemsSoFar] = new Eggs(getNumberFromParam(parts[1]));
+			breakfast[itemsSoFar] = new Eggs(parts[1]);
+			 t=getNumberFromParam(parts[1])+t;
 			;}
-	// ... Продолжается анализ других продуктов для завтрака
+	// ... РџСЂРѕРґРѕР»Р¶Р°РµС‚СЃСЏ Р°РЅР°Р»РёР· РґСЂСѓРіРёС… РїСЂРѕРґСѓРєС‚РѕРІ РґР»СЏ Р·Р°РІС‚СЂР°РєР°
 	itemsSoFar++;
 	}
-	// Перебор всех элементов массива
+	// РџРµСЂРµР±РѕСЂ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°
 	int OverallTheNumbersCheese = 0;
 	int OverallTheNumbersApple = 0;
 	int OverallTheNumbersEggs = 0;
 	Cheese overalCheese = new Cheese(null);
-	Apple overalApple = new Apple("Яблоко");
-	Eggs overalEggs = new Eggs(0);
+	Apple overalApple = new Apple("РЇР±Р»РѕРєРѕ");
+	Eggs overalEggs = new Eggs("РЇР№С†Рѕ");
 	Food item;
 	int v0;
 
@@ -42,43 +43,43 @@ public class Breakfast {
 				++OverallTheNumbersApple;
 			} else if (item.equals(overalCheese)) {
 				++OverallTheNumbersCheese;
-			} else if (item.equals(overalEggs)) {
-				OverallTheNumbersEggs=((Eggs)item).getNumber()+OverallTheNumbersEggs;
+			} else if (item.equals(overalEggs)) {			
+				OverallTheNumbersEggs=t;
 			}
 
-			// Если элемент не null - употребить продукт
+			// Р•СЃР»Рё СЌР»РµРјРµРЅС‚ РЅРµ null - СѓРїРѕС‚СЂРµР±РёС‚СЊ РїСЂРѕРґСѓРєС‚
 			item.consume();
 		} else {
 			break;
 		}
 	}
 
-     System.out.println("Всего сыра ");
+     System.out.println("Р’СЃРµРіРѕ СЃС‹СЂР° ");
      System.out.println(OverallTheNumbersCheese);
-     System.out.println("Всего яблок");
+     System.out.println("Р’СЃРµРіРѕ СЏР±Р»РѕРє");
      System.out.println(OverallTheNumbersApple);
-     System.out.println("Всего яиц");
+     System.out.println("Р’СЃРµРіРѕ СЏРёС†");
      System.out.println(OverallTheNumbersEggs);
     
 		
-	// Если дошли до элемента null – значит достигли конца
-	// списка продуктов, ведь 20 элементов в массиве было
-	// выделено с запасом, и они могут быть не
-	// использованы все
+	// Р•СЃР»Рё РґРѕС€Р»Рё РґРѕ СЌР»РµРјРµРЅС‚Р° null вЂ“ Р·РЅР°С‡РёС‚ РґРѕСЃС‚РёРіР»Рё РєРѕРЅС†Р°
+	// СЃРїРёСЃРєР° РїСЂРѕРґСѓРєС‚РѕРІ, РІРµРґСЊ 20 СЌР»РµРјРµРЅС‚РѕРІ РІ РјР°СЃСЃРёРІРµ Р±С‹Р»Рѕ
+	// РІС‹РґРµР»РµРЅРѕ СЃ Р·Р°РїР°СЃРѕРј, Рё РѕРЅРё РјРѕРіСѓС‚ Р±С‹С‚СЊ РЅРµ
+	// РёСЃРїРѕР»СЊР·РѕРІР°РЅС‹ РІСЃРµ
 	
-	System.out.println("Всего хорошего!");
+	System.out.println("Р’СЃРµРіРѕ С…РѕСЂРѕС€РµРіРѕ!");
 	}
 	private static Integer getNumberFromParam(String param) {
 		switch (param.toLowerCase()) {
-		case "одно":
+		case "РѕРґРЅРѕ":
 			return 1;
-		case "два":
+		case "РґРІР°":
 			return 2;
-		case "три":
+		case "С‚СЂРё":
 			return 3; 
 
 		default:
-			System.out.println("Неопределенное количество яиц!");
+			System.out.println("РќРµРѕРїСЂРµРґРµР»РµРЅРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЏРёС†!");
 			break;
 		}
 		return 0;
