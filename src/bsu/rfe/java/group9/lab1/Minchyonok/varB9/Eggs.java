@@ -1,8 +1,8 @@
 package bsu.rfe.java.group9.lab1.Minchyonok.varB9;
 
 public class Eggs extends Food {
-	private Integer number;
-	public Eggs(Integer number) {
+	private String number;
+	public Eggs(String number) {
 		super("Яйца");
 		this.number=number;
 		// TODO Auto-generated constructor stub
@@ -14,10 +14,10 @@ public class Eggs extends Food {
 		// TODO Auto-generated method stub
 
 	}
-	public Integer getNumber() {
+	public String getNumber() {
 		return number;
 		}
-	public void setNumber(Integer number) {
+	public void setNumber(String number) {
 		this.number = number;
 		}
 	
