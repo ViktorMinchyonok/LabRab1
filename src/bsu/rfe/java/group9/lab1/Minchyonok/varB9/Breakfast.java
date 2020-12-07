@@ -9,15 +9,19 @@ public class Breakfast {
 	// экземпляров соответствующих классов для завтрака
 	int itemsSoFar = 0;  
     int t=0;
+    int z=0;
+    int r=0;
 	for (String arg: args)  {
 	String[] parts = arg.split("/");
 	if (parts[0].equals("Cheese")) {
 	// У сыра дополнительных параметров нет
 	breakfast[itemsSoFar] = new Cheese(null);
+	r++;
 	} else
 	if (parts[0].equals("Apple")) {
 	// У яблока – 1 параметр, который находится в parts[1]
 	breakfast[itemsSoFar] = new Apple(parts[1]);
+	z++;
 	} else
 		if (parts[0].equals("Eggs")) {
 			breakfast[itemsSoFar] = new Eggs(parts[1]);
@@ -27,40 +31,25 @@ public class Breakfast {
 	itemsSoFar++;
 	}
 	// Перебор всех элементов массива
-	int OverallTheNumbersCheese = 0;
-	int OverallTheNumbersApple = 0;
-	int OverallTheNumbersEggs = 0;
-	Cheese overalCheese = new Cheese(null);
-	Apple overalApple = new Apple("Яблоко");
-	Eggs overalEggs = new Eggs("Яйцо");
-	Food item;
-	int v0;
-
-	for(v0 = 0; v0 < breakfast.length; ++v0) {
-		item = breakfast[v0];
-		if (item != null) {
-			if (item.equals(overalApple)) {
-				++OverallTheNumbersApple;
-			} else if (item.equals(overalCheese)) {
-				++OverallTheNumbersCheese;
-			} else if (item.equals(overalEggs)) {			
-				OverallTheNumbersEggs=t;
-			}
-
-			// Если элемент не null - употребить продукт
-			item.consume();
-		} else {
-			break;
-		}
-	}
+	for (Food item: breakfast)
+		if (item!=null)
+		// Если элемент не null – употребить продукт
+		item.consume();
+		else
+		// Если дошли до элемента null – значит достигли конца
+		// списка продуктов, ведь 20 элементов в массиве было
+		// выделено с запасом, и они могут быть не
+		// использованы все
+		break;
+	
 
      System.out.println("Всего сыра ");
-     System.out.println(OverallTheNumbersCheese);
+     System.out.println(r);
      System.out.println("Всего яблок");
-     System.out.println(OverallTheNumbersApple);
+     System.out.println(z);
      System.out.println("Всего яиц");
-     System.out.println(OverallTheNumbersEggs);
-    
+     System.out.println(t);
+   
 		
 	// Если дошли до элемента null – значит достигли конца
 	// списка продуктов, ведь 20 элементов в массиве было
@@ -69,6 +58,7 @@ public class Breakfast {
 	
 	System.out.println("Всего хорошего!");
 	}
+	
 	private static Integer getNumberFromParam(String param) {
 		switch (param.toLowerCase()) {
 		case "одно":
