@@ -1,16 +1,12 @@
 package bsu.rfe.java.group9.lab1.Minchyonok.varB9;
-
 public class Breakfast {
-	
-		
 	public static void main(String[] args) throws Exception {
 	// Определение ссылок на продукты завтрака
 	Food[] breakfast = new Food[20];
 	// Анализ аргументов командной строки и создание для них
 	// экземпляров соответствующих классов для завтрака
 	int itemsSoFar = 0;  
-    int t=0;
-    
+        int t=0;
 	for (String arg: args)  {
 	String[] parts = arg.split("/");
 	if (parts[0].equals("Cheese")) {
@@ -36,9 +32,9 @@ public class Breakfast {
 	Apple overalApple = new Apple("Яблоко");
 	Eggs overalEggs = new Eggs("Яйцо");
 	Food item;
-	int n;
+	int v0;
 
-	for(n = 0; n < breakfast.length; n++) {
+	for(v0 = 0; v0 < breakfast.length; ++v0) {
 		item = breakfast[v0];
 		if (item != null) {
 			if (item.equals(overalApple)) {
@@ -47,7 +43,7 @@ public class Breakfast {
 				OverallTheNumbersCheese++;
 			} else if (item.equals(overalEggs)) {			
 				
-				OverallTheNumbersEggs = t;
+				OverallTheNumbersEggs=t;
 			}
 
 			// Если элемент не null - употребить продукт
